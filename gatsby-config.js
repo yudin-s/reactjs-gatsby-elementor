@@ -9,15 +9,19 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-source-graphql`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
+        // Remote schema query type. This is an arbitrary name.
+        typeName: `WPGraphQL`,
+        // Field name under which it will be available. Used in your Gatsby query. This is also an arbitrary name.
+        fieldName: `wpGraphQL`,
+        url: "http://localhost:8089/index.php?graphql",
+        refetchInterval: 60
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
+    { 
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,
