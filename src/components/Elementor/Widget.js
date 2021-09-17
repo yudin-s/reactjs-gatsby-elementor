@@ -1,25 +1,17 @@
 import * as React from "react"
 import ucwordfirst from "../../utils/ucwordfirst"
-import * as components from "./index"
 
-import Section from './Section'
-import Column from "./Column"
-import Widget from './Widget'
+import * as elementorWidgets from "./Widgets"
 
-const elementorComponents = {
-    Section,
-    Column,
-    Widget,
-}
-const ChildRenderer = ({ elements, id }) => {
+const Widget = ({ id, elements, settings }) => {
     return (
         <div key={id} >
             {
                 elements.map(item => {
                     console.log(item)
-                    if (elementorComponents[ucwordfirst(item.elType)])
+                    if (elementorWidgets[ucwordfirst(item.widgetType)])
                         return React.createElement(
-                            elementorComponents[ucwordfirst(item.elType)],
+                            elementorWidgets[ucwordfirst(item.widgetType)],
 
                             {
                                 id: item.id,
@@ -36,4 +28,4 @@ const ChildRenderer = ({ elements, id }) => {
     )
 }
 
-export default ChildRenderer
+export default Widget;
