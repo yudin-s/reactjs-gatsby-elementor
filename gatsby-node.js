@@ -29,8 +29,10 @@ exports.createPages = ({graphql, actions}) =>{
         if(result.errors){
             throw result.errors 
         }
-        console.log(result.data);
+        console.log(result.data)
         result.data.wpGraphQL.pages.nodes.forEach(edge => {
+            console.log(edge.uri)
+            console.log(edge)
             createPage({
                 path: edge.uri,
                 component: blogPostTemplate, 
