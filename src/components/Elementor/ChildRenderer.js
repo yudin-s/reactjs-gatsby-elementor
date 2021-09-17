@@ -1,5 +1,5 @@
 import * as React from "react"
-import ucwordfirst from "../../utils/ucwordfirst"
+import { toPascalCase } from "../../utils/ucwordfirst"
 import * as components from "./index"
 
 import Section from './Section'
@@ -16,11 +16,11 @@ const ChildRenderer = ({ elements, id }) => {
         <div key={id} >
             {
                 elements.map(item => {
-                    console.log(ucwordfirst(item.elType))
+                    console.log(toPascalCase(item.elType))
 
-                    if (elementorComponents[ucwordfirst(item.elType)])
+                    if (elementorComponents[toPascalCase(item.elType)])
                         return React.createElement(
-                            elementorComponents[ucwordfirst(item.elType)],
+                            elementorComponents[toPascalCase(item.elType)],
 
                             {
                                 id: item.id,

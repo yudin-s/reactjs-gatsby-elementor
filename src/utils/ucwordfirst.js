@@ -3,4 +3,8 @@ export const ucwordfirst = (str) => {
     return str2
 }
 
-export default ucwordfirst;
+export const toPascalCase = (str) => {
+    return str.split('-').map(el => ucwordfirst(el)).join('')
+}
+
+export default { ucwordfirst, toPascalCase };

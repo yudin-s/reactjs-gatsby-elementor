@@ -1,19 +1,20 @@
 import * as React from "react"
-import ucwordfirst from "../../utils/ucwordfirst"
+import { toPascalCase } from "../../utils/ucwordfirst"
 
 import Image from "./Widgets/Image"
 import Heading from "./Widgets/Heading"
-
+import TextEditor from "./Widgets/TextEditor"
 const elementorWidgets = {
     Image,
-    Heading
+    Heading,
+    TextEditor
 }
 
 const Widget = ({ id, elements, settings, widgetType }) => {
 
-    if (elementorWidgets[ucwordfirst(widgetType)]) {
+    if (elementorWidgets[toPascalCase(widgetType)]) {
         return React.createElement(
-            elementorWidgets[ucwordfirst(widgetType)],
+            elementorWidgets[toPascalCase(widgetType)],
             {
                 settings, elements, widgetType, id
             }
