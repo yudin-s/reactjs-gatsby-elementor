@@ -16,7 +16,8 @@ const ChildRenderer = ({ elements, id }) => {
         <div key={id} >
             {
                 elements.map(item => {
-                    console.log(item)
+                    console.log(ucwordfirst(item.elType))
+
                     if (elementorComponents[ucwordfirst(item.elType)])
                         return React.createElement(
                             elementorComponents[ucwordfirst(item.elType)],

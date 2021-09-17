@@ -1,31 +1,27 @@
 import * as React from "react"
 import ucwordfirst from "../../utils/ucwordfirst"
 
-import * as elementorWidgets from "./Widgets"
+import Image from "./Widgets/Image"
 
-const Widget = ({ id, elements, settings }) => {
-    return (
-        <div key={id} >
+const elementorWidgets = {
+    Image
+}
+
+const Widget = ({ id, elements, settings, widgetType }) => {
+
+    if (elementorWidgets[ucwordfirst(widgetType)]) {
+        return React.createElement(
+            elementorWidgets[ucwordfirst(widgetType)],
+
             {
-                elements.map(item => {
-                    console.log(item)
-                    if (elementorWidgets[ucwordfirst(item.widgetType)])
-                        return React.createElement(
-                            elementorWidgets[ucwordfirst(item.widgetType)],
-
-                            {
-                                id: item.id,
-                                ...item
-                            }
-                        )
-                    else {
-                        return (<h5>Not implemented yet {item.widgetType}</h5>)
-                    }
-                }
-                )
+                settings, elements, widgetType, id
             }
-        </div>
-    )
+        )
+    }
+    else {
+        return (<h5>Not implemented yet {widgetType}</h5>)
+    }
+
 }
 
 export default Widget;

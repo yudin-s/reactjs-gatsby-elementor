@@ -1,9 +1,9 @@
 import * as React from "react"
 
-const Image = (data) => {
-    console.log('image', data)
+const Image = ({ settings, id }) => {
+    const image = settings.image
     return (
-        <h6>Image</h6>
+        <img key={id} src={image.url} alt={image.alt} />
     )
 }
 
